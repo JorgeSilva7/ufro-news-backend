@@ -58,16 +58,20 @@ async function getNewsById(news) {
 			.find("tbody > tr > td#imagen")
 			.find("p")
 			.each((index, el) => {
-				const image = $(el).find("a").attr("href");
+				const image = `${BASE_URL}${$(el).find("a").attr("href")}`;
 				if (image) {
 					newsDetail.images.push(image);
 				}
 			});
 
-		newsDetail.resume = $(el).find("tbody > tr > td").find("p.bajada").text();
+		newsDetail.resume = $(el)
+			.find("tbody > tr > td")
+			.find("p.bajada")
+			.text()
+			.trim();
 	});
 	$("table.tnoticia").each((_index, el) => {
-		newsDetail.body = $(el).find("tbody > tr > td").next().html();
+		newsDetail.body = $(el).find("tbody > tr > td").next().html().trim();
 	});
 
 	news.details = newsDetail;
