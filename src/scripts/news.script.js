@@ -58,9 +58,9 @@ async function getNewsById(news) {
 			.find("tbody > tr > td#imagen")
 			.find("p")
 			.each((index, el) => {
-				const image = `${BASE_URL}${$(el).find("a").attr("href")}`;
+				const image = $(el).find("a").attr("href");
 				if (image) {
-					newsDetail.images.push(image);
+					newsDetail.images.push(`${BASE_URL}${image}`);
 				}
 			});
 
