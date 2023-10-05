@@ -36,12 +36,10 @@ async function getNews() {
  */
 const initializeCron = async () => {
 	console.log("CRON HAS BEEN INITIALIZED");
-	// cron.schedule(CRON_CONFIG, () => {
-	// 	getEvents();
-	// 	getNews();
-	// });
-	getEvents();
-	getNews();
+	cron.schedule(CRON_CONFIG, () => {
+		getEvents();
+		getNews();
+	});
 };
 
 export default initializeCron;
