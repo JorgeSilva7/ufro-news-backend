@@ -4,11 +4,12 @@ import eventRouter from "./routers/event.router.js";
 import envs from "./config/envs.config.js";
 import connectDB from "./config/mongo.config.js";
 import initializeCron from "./config/cron.config.js";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
-
+app.use(cors());
 app.use("", newsRouter);
 app.use("", eventRouter);
 
